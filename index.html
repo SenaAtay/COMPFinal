@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "scripts\main.js" defer> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="styles\main.css">
+    <title>Wanderlust</title>
+</head>
+
+<body class = "darkMode" id="body">
+    <nav>
+        <input type="checkbox" id= "checkButton">
+        <label for="checkButton" class = "checkButton">
+            <i class = "fas fa-bars"></i>
+        </label>
+        <a href="#" class = "brand" > WANDERLUST</a>
+
+        <ul>
+            <li><a href="#" >Explore</a> </li>
+            <li><a href="#">Gallery</a> </li>
+            <li><a href="#" >About</a> </li>
+            <li><a href="#" >Contact</a> </li>
+        </ul>
+    </nav>
+    
+    <div class = "all">
+        <section id = "buttonSection">
+            <h1>Change the light mode to your liking! </h1>
+            <button id = "darkMode"> Dark Mode </button>
+            <button id = "lightMode"> Light Mode</button>
+        </section>
+        
+        <section id = "weatherSection">
+            <h1 id = "weatherHeading">Check the weather at your travel destination! <br> (type city name)</h1>
+            <input id = "weatherSearch"> </input>
+            <div id = "weatherGallery" class = "row">
+
+            </div>
+        </section>
+
+        <section id = "currencySection">
+            <!-- <button id = "currency">CURRENCY</button> -->
+            <h1 id = "newsHeading">Convert to your travel destination currency!</h1>
+            <input type="text" list = "currencyList" id = "from">
+            <input type="text" list = "currencyList" id = "to" >
+            <datalist id = "currencyList">
+                <!-- <option value="Kahlo"> </option> -->
+            </datalist>
+            <button id="convert">Convert</button>
+            <div id="currencyMessageDiv"></div>
+        </section>
+        
+        <section id = "newsSection" >
+            <h1 id = "newsHeading">Check the most recent and popular news on your travel destination! <br> (type city or country name)</h1>
+            <input id = "newsSearch"> </input>
+            <div id = "newsGallery" class = "row">
+
+            </div>
+        </section>
+        
+        <section id = "imageSection">
+            <h1>Search images of travel destinations for inspiration!</h1>
+            <input id = "photoSearch"> </input>
+            <div id = "imageGallery"></div>
+        </section>
+        
+        <section id = "gameSection">
+            <h1>Play guess the flag game!</h1>
+            <div id="flagImageDiv"></div>
+            <p id = "tries">0/25</p>
+            <input id = "gameInput" value = ""> </input>
+            <button id = "differentFlag">Different Flag</button>
+            <div id="messageDiv"></div>
+        </section>
+    
+    </div>
+</body>
+</html> 

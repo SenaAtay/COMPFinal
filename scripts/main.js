@@ -283,5 +283,3 @@ window.onload = function() {
             .catch((error) => console.log("Error", error))
         }
    })
-
- t
