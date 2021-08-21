@@ -173,10 +173,6 @@ window.onload = function() {
            fetch(newsApiURL)
            .then((data) => {
                console.log(data)
-            //    if(data.ok){
-            //        return data.json()
-            //     }
-            //     throw new Error ("Fetch response not ok");
                 return data.json()
             })
             .then((data) =>{
