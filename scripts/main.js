@@ -167,9 +167,11 @@ window.onload = function() {
            }
            let country = e.target.value
            // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
-           let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`
+           let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
+           console.log(newsApiURL)
            fetch(newsApiURL)
            .then((data) => {
+               console.log(data)
                if(data.ok){
                    return data.json()
                 }
@@ -211,9 +213,11 @@ window.onload = function() {
             }
         let city = e.target.value
         // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
-        let weatherApiURL = `${weatherApiPath}${city}${days}`
+        let weatherApiURL = `${weatherApiPath}${city}${days}`;
+        console.log(weatherApiURL)
         fetch(weatherApiURL)
         .then((data) => {
+            console.log(data)
             if(data.ok){
                 return data.json()
             }
@@ -261,7 +265,6 @@ window.onload = function() {
 
    let convertButton = document.getElementById('convert')
    convertButton.addEventListener('click', (e) => {
-       // https://cdn.jsdelivr.net/gh/fawazahmed0/currencyapi@1/latest/currencies/eur/jpy.json
         let apiPath = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/`;
         let to = document.getElementById('to');
         let from = document.getElementById('from');
