@@ -134,11 +134,11 @@ window.onload = function() {
         let unsplashApiURL = `${unsplashApiPath}${country}${unsplashApiKey}`
         fetch(unsplashApiURL)
         .then((data) => {
-            // if(data.ok){
-            //     return data.json()
-            // }
-            // throw new Error ("Fetch response not ok");
-            return data.json()
+            if(data.ok){
+                return data.json()
+            }
+            throw new Error ("Fetch response not ok");
+            
         })
         .then((data) => {
             data.results.forEach((photo) =>{
@@ -173,10 +173,11 @@ window.onload = function() {
            fetch(newsApiURL)
            .then((data) => {
                console.log(data)
-               if(data.ok){
-                   return data.json()
-                }
-                throw new Error ("Fetch response not ok");
+            //    if(data.ok){
+            //        return data.json()
+            //     }
+            //     throw new Error ("Fetch response not ok");
+                return data.json()
             })
             .then((data) =>{
                 for (let i =0; i < 5; i++) {
