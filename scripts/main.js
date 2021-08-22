@@ -9,7 +9,8 @@ window.onload = function() {
 
    //GAME
    loadFlag = () => {
-       let apiURL =`https://cdn.jsdelivr.net/npm/world_countries_lists@latest/data/en/countries.json`;
+    //    let apiURL =`https://cdn.jsdelivr.net/npm/world_countries_lists@latest/data/en/countries.json`;
+       let apiURL =`https://restcountries.eu/rest/v2/all`;
        fetch(apiURL)
        .then((data) => {
            if(data.ok){
@@ -18,11 +19,15 @@ window.onload = function() {
             throw new Error ("Fetch response not ok");
         })
         .then((data) =>{
+            console.log(data.length)
             let i = Math.floor((Math.random() * (data.length))) ;
             let country = data[i].name.toLowerCase();
-            let countryAbr = data[i].alpha2;
+            let countryAbr = data[i].alpha2Code;
+            // console.log(country)
+            // let countryAbr = data[i].alpha2;
             document.getElementById('tries').innerHTML = ` <p id = "tries"> Tries: ${tries}/25</p>`;
-            document.getElementById("flagImageDiv").innerHTML = `<img src='128x128\\${countryAbr}.png' id = "countryFlag" data-country = "${country}"></img>`;
+            // document.getElementById("flagImageDiv").innerHTML = `<img src='128x128\\${countryAbr}.png' id = "countryFlag" data-country = "${country}"></img>`;
+            document.getElementById("flagImageDiv").innerHTML = `<img src='${data[i].flag}' id = "countryFlag" data-country = "${country}" width = "200" height = "100"></img>`;
             let differentFlagButton = document.getElementById('differentFlag');
             differentFlagButton.disabled = true;
         })
