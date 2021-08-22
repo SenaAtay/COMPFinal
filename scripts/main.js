@@ -12,7 +12,6 @@ window.onload = function() {
 
    //GAME
    loadFlag = () => {
-    //    let apiURL =`https://cdn.jsdelivr.net/npm/world_countries_lists@latest/data/en/countries.json`;
        let apiURL =`https://restcountries.eu/rest/v2/all`;
        fetch(apiURL)
        .then((data) => {
@@ -22,14 +21,10 @@ window.onload = function() {
             throw new Error ("Fetch response not ok");
         })
         .then((data) =>{
-            // console.log(data.length)
             let i = Math.floor((Math.random() * (data.length))) ;
             let country = data[i].name.toLowerCase();
             let countryAbr = data[i].alpha2Code;
-            // console.log(country)
-            // let countryAbr = data[i].alpha2;
             document.getElementById('tries').innerHTML = ` <p id = "tries"> Tries: ${tries}/25</p>`;
-            // document.getElementById("flagImageDiv").innerHTML = `<img src='128x128\\${countryAbr}.png' id = "countryFlag" data-country = "${country}"></img>`;
             document.getElementById("flagImageDiv").innerHTML = `<img src='${data[i].flag}' id = "countryFlag" data-country = "${country}" width = "200" height = "100"></img>`;
             let differentFlagButton = document.getElementById('differentFlag');
             differentFlagButton.disabled = true;
@@ -159,73 +154,7 @@ window.onload = function() {
         }
     })
 
-//    // NEWS API
-//    // d35dc60d5c9c46998d151927e748d025
-//    //https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
-//    // https://newsapi.org/v2/everything?q=apple
-//    // let newsApiPath = 'https://newsapi.org/v2/top-headlines?country=';
-//    let newsApiPath ="https://newsapi.org/v2/everything?language=en&sortBy=publishedAt&sortBy=popularity";
-//    let additional = "&qInTitle=";
-//    let newsApiKey = '&apiKey=d35dc60d5c9c46998d151927e748d025';
-//    let newsSearch = document.getElementById('newsSearch')
-//    newsSearch.addEventListener('keyup', (e) => {
-//        if(e.keyCode === 13){
-//            let newsGallery = document.getElementById('newsGallery');
-//            while (newsGallery.firstChild) {
-//                newsGallery.removeChild(newsGallery.firstChild);
-//            }
-//            let country = e.target.value
-//            // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
-//         //    let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
-//             // let newsApiURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spain&api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav&fq=glocations:("SPAIN")&sort=newest'
-//            //let newsApiURL ='https://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav'
-//         //    console.log(newsApiURL)
-//             //let newsApiURL = 'http://api.mediastack.com/v1/news?access_key=3c001a0c9a2bcbdc665b63a792105d4f&countries=us'
-//             // let newsApiURL = 'https://www.reisewarnung.net/api'
-//             let newsApiURL = 'https://www.travel-advisory.info/api'
 
-//            fetch(newsApiURL)
-//            .then((data) => {
-//             //    console.log(data)
-//                 return data.json()
-//             })
-//             .then((data) =>{
-//                 // for (let i =0; i < 5; i++) {
-//                 //     let html = `
-//                 //     <div class = "card">
-//                 //     <div class = "headline">
-//                 //     <a href="${data.articles[i].url}">${data.articles[i].title}</a>
-//                 //     </div>
-//                 //     </div>`;
-//                 //     $("#newsGallery").append(html)
-//                 // }
-
-//                 // for (let i =0; i < 5; i++) {
-//                 //     let html = `
-//                 //     <div class = "card">
-//                 //     <div class = "headline">
-//                 //     <a href="${data.responses.docs[i].web_url}">${data.responses.docs[i].headline}</a>
-//                 //     </div>
-//                 //     </div>`;
-//                 //     $("#newsGallery").append(html)
-//                 // }
-
-//                 console.log(data)
-//             })
-//             .catch((error) => console.log("Error", error))
-//         }
-//    })
-
-
-   // c380e05b4316423c83e223849211308
-   //9b93857cb7b040b8fb6d74a6cc5be786
-   // let weatherApiKey = '&key=c380e05b4316423c83e223849211308';
-   // http://api.weatherstack.com/forecast
-   // ? access_key = YOUR_ACCESS_KEY
-   // & query = New York
-   // & forecast_days = 1
-   // let weatherApiPath ="http://api.weatherstack.com/forecast?access_key=9b93857cb7b040b8fb6d74a6cc5be786&query="
-   // let days = "&forecast_days=14"
    let weatherApiPath ="http://api.weatherapi.com/v1/forecast.json?key=c380e05b4316423c83e223849211308&q="
    let days = "&days=7"
    let weatherSearch = document.getElementById('weatherSearch')
@@ -236,7 +165,6 @@ window.onload = function() {
                weatherGallery.removeChild(weatherGallery.firstChild);
             }
         let city = e.target.value
-        // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
         let weatherApiURL = `${weatherApiPath}${city}${days}`;
         console.log(weatherApiURL)
         fetch(weatherApiURL)
@@ -265,7 +193,6 @@ window.onload = function() {
 
 
    loadCurrencies = () => {
-    //    let apiURL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currencyapi@1/latest/currencies.json`;
        let apiURL = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies.json`
         fetch(apiURL)
         .then((data) => {
@@ -279,10 +206,6 @@ window.onload = function() {
                 let html = `<option value = "${prop}" > "${data[prop]}"</option>`
                 $("#currencyList").append(html)
         }
-        // data.results.forEach((currency) =>{
-        // let html = `<option value = "${currency}"> </option>`
-        // $("#currencyList").append(html)
-        // })
         })
         .catch((error) => console.log("Error", error))
     }
@@ -297,7 +220,6 @@ window.onload = function() {
                 throw new Error ("Fetch response not ok");
             })
             .then((dataa) =>{
-                // console.log(dataa.data)
                 for (let prop in dataa.data) {
                     let html = `<option value = "${prop}" id = "optionId" > "${dataa.data[prop].name}"</option>`
                     $("#countryCodeList").append(html)
@@ -346,15 +268,6 @@ window.onload = function() {
                 throw new Error ("Fetch response not ok");
             })
             .then((dataa) =>{
-                // console.log(dataa)
-                // console.log(countryCodeA)
-                // console.log(dataa.data[`${countryCodeA}`].advisory.message)
-                // console.log(countryCodeA)
-                // console.log(dataa.data)
-                // for (prop in dataa.data){
-                //     console.log(prop)
-                // }
-                // data.countryCode.advisory.message
                 document.getElementById('newsGallery').innerHTML = `${dataa.data[`${countryCodeA}`].advisory.message}`;
             })
             .catch((error) => console.log("Error", error))
