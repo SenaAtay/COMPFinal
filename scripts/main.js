@@ -2,10 +2,13 @@ window.onload = function() {
     maintainMode();
     loadFlag();
     loadCurrencies();
+    loadCountryCodes();
+
    
    };
    let score = 0;
    let tries = 0;
+
 
    //GAME
    loadFlag = () => {
@@ -19,7 +22,7 @@ window.onload = function() {
             throw new Error ("Fetch response not ok");
         })
         .then((data) =>{
-            console.log(data.length)
+            // console.log(data.length)
             let i = Math.floor((Math.random() * (data.length))) ;
             let country = data[i].name.toLowerCase();
             let countryAbr = data[i].alpha2Code;
@@ -156,62 +159,62 @@ window.onload = function() {
         }
     })
 
-   // NEWS API
-   // d35dc60d5c9c46998d151927e748d025
-   //https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
-   // https://newsapi.org/v2/everything?q=apple
-   // let newsApiPath = 'https://newsapi.org/v2/top-headlines?country=';
-   let newsApiPath ="https://newsapi.org/v2/everything?language=en&sortBy=publishedAt&sortBy=popularity";
-   let additional = "&qInTitle=";
-   let newsApiKey = '&apiKey=d35dc60d5c9c46998d151927e748d025';
-   let newsSearch = document.getElementById('newsSearch')
-   newsSearch.addEventListener('keyup', (e) => {
-       if(e.keyCode === 13){
-           let newsGallery = document.getElementById('newsGallery');
-           while (newsGallery.firstChild) {
-               newsGallery.removeChild(newsGallery.firstChild);
-           }
-           let country = e.target.value
-           // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
-        //    let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
-            // let newsApiURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spain&api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav&fq=glocations:("SPAIN")&sort=newest'
-           //let newsApiURL ='https://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav'
-        //    console.log(newsApiURL)
-            //let newsApiURL = 'http://api.mediastack.com/v1/news?access_key=3c001a0c9a2bcbdc665b63a792105d4f&countries=us'
-            // let newsApiURL = 'https://www.reisewarnung.net/api'
-            let newsApiURL = 'https://www.travel-advisory.info/api'
+//    // NEWS API
+//    // d35dc60d5c9c46998d151927e748d025
+//    //https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
+//    // https://newsapi.org/v2/everything?q=apple
+//    // let newsApiPath = 'https://newsapi.org/v2/top-headlines?country=';
+//    let newsApiPath ="https://newsapi.org/v2/everything?language=en&sortBy=publishedAt&sortBy=popularity";
+//    let additional = "&qInTitle=";
+//    let newsApiKey = '&apiKey=d35dc60d5c9c46998d151927e748d025';
+//    let newsSearch = document.getElementById('newsSearch')
+//    newsSearch.addEventListener('keyup', (e) => {
+//        if(e.keyCode === 13){
+//            let newsGallery = document.getElementById('newsGallery');
+//            while (newsGallery.firstChild) {
+//                newsGallery.removeChild(newsGallery.firstChild);
+//            }
+//            let country = e.target.value
+//            // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
+//         //    let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
+//             // let newsApiURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spain&api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav&fq=glocations:("SPAIN")&sort=newest'
+//            //let newsApiURL ='https://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav'
+//         //    console.log(newsApiURL)
+//             //let newsApiURL = 'http://api.mediastack.com/v1/news?access_key=3c001a0c9a2bcbdc665b63a792105d4f&countries=us'
+//             // let newsApiURL = 'https://www.reisewarnung.net/api'
+//             let newsApiURL = 'https://www.travel-advisory.info/api'
 
-           fetch(newsApiURL)
-           .then((data) => {
-            //    console.log(data)
-                return data.json()
-            })
-            .then((data) =>{
-                // for (let i =0; i < 5; i++) {
-                //     let html = `
-                //     <div class = "card">
-                //     <div class = "headline">
-                //     <a href="${data.articles[i].url}">${data.articles[i].title}</a>
-                //     </div>
-                //     </div>`;
-                //     $("#newsGallery").append(html)
-                // }
+//            fetch(newsApiURL)
+//            .then((data) => {
+//             //    console.log(data)
+//                 return data.json()
+//             })
+//             .then((data) =>{
+//                 // for (let i =0; i < 5; i++) {
+//                 //     let html = `
+//                 //     <div class = "card">
+//                 //     <div class = "headline">
+//                 //     <a href="${data.articles[i].url}">${data.articles[i].title}</a>
+//                 //     </div>
+//                 //     </div>`;
+//                 //     $("#newsGallery").append(html)
+//                 // }
 
-                // for (let i =0; i < 5; i++) {
-                //     let html = `
-                //     <div class = "card">
-                //     <div class = "headline">
-                //     <a href="${data.responses.docs[i].web_url}">${data.responses.docs[i].headline}</a>
-                //     </div>
-                //     </div>`;
-                //     $("#newsGallery").append(html)
-                // }
+//                 // for (let i =0; i < 5; i++) {
+//                 //     let html = `
+//                 //     <div class = "card">
+//                 //     <div class = "headline">
+//                 //     <a href="${data.responses.docs[i].web_url}">${data.responses.docs[i].headline}</a>
+//                 //     </div>
+//                 //     </div>`;
+//                 //     $("#newsGallery").append(html)
+//                 // }
 
-                console.log(data)
-            })
-            .catch((error) => console.log("Error", error))
-        }
-   })
+//                 console.log(data)
+//             })
+//             .catch((error) => console.log("Error", error))
+//         }
+//    })
 
 
    // c380e05b4316423c83e223849211308
@@ -284,6 +287,27 @@ window.onload = function() {
         .catch((error) => console.log("Error", error))
     }
 
+    loadCountryCodes = () => {
+            let apiURL =`https://www.travel-advisory.info/api`
+            fetch(apiURL)
+            .then((data) => {
+                if(data.ok){
+                    return data.json()
+                }
+                throw new Error ("Fetch response not ok");
+            })
+            .then((dataa) =>{
+                // console.log(dataa.data)
+                for (let prop in dataa.data) {
+                    let html = `<option value = "${prop}" id = "optionId" > "${dataa.data[prop].name}"</option>`
+                    $("#countryCodeList").append(html)
+            }
+            })
+            .catch((error) => console.log("Error", error))
+        }
+
+
+
    let convertButton = document.getElementById('convert')
    convertButton.addEventListener('click', (e) => {
         let apiPath = `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/`;
@@ -301,9 +325,43 @@ window.onload = function() {
                 throw new Error ("Fetch response not ok");
             })
             .then((data) =>{
-                document.getElementById('currencyMessageDiv').innerHTML = `1
-                ${from.value} = ${data[`${to.value}`]}${to.value}`;
+                document.getElementById('currencyMessageDiv').innerHTML = `1 ${from.value} = ${data[`${to.value}`]}${to.value}`;
             })
             .catch((error) => console.log("Error", error))
         }
    })
+
+   let safetyButton = document.getElementById('safety')
+   safetyButton.addEventListener('click', (e) => {
+        let apiPath = `https://www.travel-advisory.info/api?countrycode=`;
+        countryCode = document.getElementById('newsSearch')
+        countryCodeA = `${countryCode.value}` ;
+        apiURL = apiPath + countryCodeA;
+        if (countryCode.value != ""){
+            fetch(apiURL)
+            .then((data) => {
+                if(data.ok){
+                    return data.json()
+                }
+                throw new Error ("Fetch response not ok");
+            })
+            .then((dataa) =>{
+                // console.log(dataa)
+                // console.log(countryCodeA)
+                // console.log(dataa.data[`${countryCodeA}`].advisory.message)
+                // console.log(countryCodeA)
+                // console.log(dataa.data)
+                // for (prop in dataa.data){
+                //     console.log(prop)
+                // }
+                // data.countryCode.advisory.message
+                document.getElementById('newsGallery').innerHTML = `${dataa.data[`${countryCodeA}`].advisory.message}`;
+            })
+            .catch((error) => console.log("Error", error))
+        }
+   })
+
+
+
+
+   

@@ -19,9 +19,14 @@
     flex-direction: column;
     margin: 10px;
     overflow-x: hidden;
-   
-   
+
+
    }
+
+   #countryCode{
+       margin-bottom: 20px;
+
+    }
    input{
     display: flex;
     justify-content: center;
@@ -237,10 +242,10 @@
    #from{
     margin-bottom: 20px;
    }
-   #currencyList{
+   /* #currencyList{
     width: auto;
    
-   }
+   } */
    /* #currencyList{
     display: flex;
     /* flex-direction: column;
