@@ -173,23 +173,41 @@ window.onload = function() {
            }
            let country = e.target.value
            // let newsApiURL =`${newsApiPath}${country}${additional}${country}${newsApiKey}`
-           let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
-           console.log(newsApiURL)
+        //    let newsApiURL = `${newsApiPath}${additional}${country}${newsApiKey}`;
+            // let newsApiURL = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spain&api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav&fq=glocations:("SPAIN")&sort=newest'
+           //let newsApiURL ='https://api.nytimes.com/svc/news/v3/content/nyt/world.json?api-key=ugdSAukynFQdX0s5MMHfWbcoGlNbYMav'
+        //    console.log(newsApiURL)
+            //let newsApiURL = 'http://api.mediastack.com/v1/news?access_key=3c001a0c9a2bcbdc665b63a792105d4f&countries=us'
+            // let newsApiURL = 'https://www.reisewarnung.net/api'
+            let newsApiURL = 'https://www.travel-advisory.info/api'
+
            fetch(newsApiURL)
            .then((data) => {
-               console.log(data)
+            //    console.log(data)
                 return data.json()
             })
             .then((data) =>{
-                for (let i =0; i < 5; i++) {
-                    let html = `
-                    <div class = "card">
-                    <div class = "headline">
-                    <a href="${data.articles[i].url}">${data.articles[i].title}</a>
-                    </div>
-                    </div>`;
-                    $("#newsGallery").append(html)
-                }
+                // for (let i =0; i < 5; i++) {
+                //     let html = `
+                //     <div class = "card">
+                //     <div class = "headline">
+                //     <a href="${data.articles[i].url}">${data.articles[i].title}</a>
+                //     </div>
+                //     </div>`;
+                //     $("#newsGallery").append(html)
+                // }
+
+                // for (let i =0; i < 5; i++) {
+                //     let html = `
+                //     <div class = "card">
+                //     <div class = "headline">
+                //     <a href="${data.responses.docs[i].web_url}">${data.responses.docs[i].headline}</a>
+                //     </div>
+                //     </div>`;
+                //     $("#newsGallery").append(html)
+                // }
+
+                console.log(data)
             })
             .catch((error) => console.log("Error", error))
         }
